@@ -1,7 +1,6 @@
 import numpy as np
-import numba as nb
+#import numba as nb
 
-@nb.njit
 def solve_tridiagonal_matrix(a, b, c, d):
     """
     Solves a tridiagonal matrix system using the Thomas algorithm (TDMA).
@@ -21,9 +20,6 @@ def solve_tridiagonal_matrix(a, b, c, d):
     x = [0] * n
 
     # Forward elimination
-    c_dash[0] = c[0] / b[0]
-    d_dash[0] = d[0] / b[0]
-
     for i in range(1, n - 1):
         c_dash[i] = c[i] / (b[i] - a[i - 1] * c_dash[i - 1])
 
