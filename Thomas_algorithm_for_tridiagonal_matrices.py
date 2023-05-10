@@ -36,3 +36,25 @@ def solve_tridiagonal_matrix(a, b, c, d):
         x[i] = d_dash[i] - c_dash[i] * x[i + 1]
 
     return x
+
+
+# Tridiagonal matrix
+def create_tridiagonal_matrix(n):
+    """
+    Creates a tridiagonal matrix of size n x n with 1 on the main diagonal and -1 on the upper and lower diagonals.
+
+    Parameters:
+        n (int): Size of the matrix.
+
+    Returns:
+        ndarray: The tridiagonal matrix.
+    """
+    main_diag = np.ones(n)
+    off_diag = -np.ones(n - 1)
+
+    matrix = np.diag(main_diag) + np.diag(off_diag, -1) + np.diag(off_diag, 1)
+    return matrix
+
+# Create a tridiagonal matrix of size 100x100
+matrix = create_tridiagonal_matrix(100)
+print(matrix)
